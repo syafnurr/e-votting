@@ -5,7 +5,7 @@
 <div class="layout-page">
     <div class="content-wrapper bg-white">
         <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="py-3 mb-4"><span class="text-muted fw-light">Live Chart /</span> All</h4>
+        <h4 class="py-3 mb-4"><span class="text-muted fw-light">Dashboard /</span> Live Chart</h4>
         <div class="row">
             <!-- Skor Calon 1-->
             <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">

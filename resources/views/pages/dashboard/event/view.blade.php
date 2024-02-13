@@ -4,7 +4,7 @@
 <div class="layout-page">
     <div class="content-wrapper bg-white">
         <div class="container flex-grow-1 container-p-y">
-            <h4 class="py-3 mb-4"><span class="text-muted fw-light">Event /</span> All</h4>
+            <h4 class="py-3 mb-4"><span class="text-muted fw-light">Dashboard /</span> Event</h4>
         <div class="btn-toolbar form-group mb-3">
             <div class="">
             <a href="/dashboard/event/create" type="button" class="btn btn-primary waves-effect waves-light mr-1">ADD NEW</a>

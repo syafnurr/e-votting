@@ -92,68 +92,6 @@
         </div>
         </div>
     </div>
-    <!-- Content -->
-
-        <!-- <div class="form-check form-switch mb-2">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-            <label class="form-check-label" for="flexSwitchCheckChecked">live counting</label>
-        </div>
-        <div class="row">
-            <div class="col-sm">
-                <div class="form-group" id="tanggalPengumuman">
-                    <label class="control-label">Tanggal Pengumuman</label>
-                    <input maxlength="200" type="date" class="form-control" placeholder="Pilih Tanggal Pemilihan"/>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="form-group" id="waktuPengumuman">
-                <label class="control-label">Waktu Pengumuman</label>
-                <input maxlength="200" type="text" class="form-control" name="time" placeholder = "Pilih Jam Dimulai Pemilihan (WIB)">                              
-            </div>
-        </div> -->
-
-<!-- Clock Picker -->
-<script>
-    // Pastikan dokumen telah dimuat sebelum menjalankan script
-    $(document).ready(function () {
-        // Inisialisasi clockpicker pada elemen input dengan nama "time"
-        $("input[name=time]").clockpicker({
-            placement: 'bottom',
-            align: 'left',
-            autoclose: true,
-            default: 'now',
-            donetext: "Select",
-            init: function () {
-                console.log("clockpicker initiated");
-            },
-            beforeShow: function () {
-                console.log("before show");
-            },
-            afterShow: function () {
-                console.log("after show");
-            },
-            beforeHide: function () {
-                console.log("before hide");
-            },
-            afterHide: function () {
-                console.log("after hide");
-            },
-            beforeHourSelect: function () {
-                console.log("before hour selected");
-            },
-            afterHourSelect: function () {
-                console.log("after hour selected");
-            },
-            beforeDone: function () {
-                console.log("before done");
-            },
-            afterDone: function () {
-                console.log("after done");
-            }
-        });
-    });
-</script>
 
 <!-- checklist switch -->
 <script>

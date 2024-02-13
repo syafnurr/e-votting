@@ -11,7 +11,7 @@ class EventModel extends Model
 
     protected $table = 'events';
     protected $fillable = [
-        'users_id', 'title', 'tgl_pemilihan', 'jam_dimulai', 'jam_selesai',
+        'users_id', 'title', 'tgl_pemilihan', 'jam_dimulai', 'jam_selesai', 'tgl_pengumuman', 'jam_pengumuman'
     ];
 
     // protected $guarded = [];

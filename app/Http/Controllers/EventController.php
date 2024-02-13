@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\EventModel;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 
 class EventController extends Controller
 {
@@ -21,6 +21,10 @@ class EventController extends Controller
 
         // Retrieve events associated with the authenticated user
         $data = EventModel::where('users_id', $users_id)->get();
+        $users = User::pluck('total_event')->toArray();
+
+        var_dump($users);
+        die();
 
         return view('pages.dashboard.event.view', compact('data'));
     }
@@ -44,8 +48,8 @@ class EventController extends Controller
             'tgl_pemilihan' => 'required|date',
             'jam_dimulai' => 'required|string',
             'jam_selesai' => 'required|string',
-            'tgl_pengumuman' => 'date',
-            'jam_pengumuman' => 'string'
+            'tgl_pengumuman' => 'nullable|date',
+            'jam_pengumuman' => 'nullable|string'
         ]);
 
         EventModel::create([
@@ -66,7 +70,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        $data = EventModel::find($id);
+        $data = EventModel::findOrFail($id);
 
         // dd($data);
         // var_dump($data);
