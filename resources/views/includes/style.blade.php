@@ -29,3 +29,6 @@
 <!-- Helpers -->
 <script src="{{ url('assets/vendor/js/helpers.js') }}"></script>
 <script src="{{ url('assets/js/config.js') }}"></script>
+
+<!-- select2 -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta3/dist/css/select2.min.css" rel="stylesheet">

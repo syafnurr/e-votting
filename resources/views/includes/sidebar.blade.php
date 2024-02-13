@@ -97,6 +97,13 @@
             <div data-i18n="Basic">Users</div>
             </a>
         </li>
+        <!-- Logout -->
+        <li class="menu-item">
+            <a href="/logout" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-log-out"></i>
+            <div data-i18n="Basic">Logout</div>
+            </a>
+        </li>
     </ul>
 </aside>
 <!-- / Menu -->

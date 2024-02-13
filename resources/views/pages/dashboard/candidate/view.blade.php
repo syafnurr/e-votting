@@ -6,8 +6,16 @@
         <div class="container flex-grow-1 container-p-y">
         <h4 class="py-3 mb-4"><span class="text-muted fw-light">Dashboard / </span>Candidate</h4>
         <div class="btn-toolbar form-group mb-3">
-            <div class="">
-            <a href="/dashboard/candidate/create" type="button" class="btn btn-primary waves-effect waves-light mr-1">ADD NEW</a>
+            <div class="add">
+                <a href="/dashboard/candidate/create" type="button" class="btn btn-primary waves-effect waves-light mr-1">ADD NEW</a>
+            </div>
+            <div class="filter">
+                <select class="form-control ml-1 border-primary" id="selectDropdown">
+                    <option value="">Pemilihan Ketua</option>
+                    <option value="">Pemilihan Presiden</option>
+                    <option value="">Pemilihan RT</option>
+                    <option value="">Pemilihan Dukuh</option>
+                </select>
             </div>
         </div>
         <div class="row">
@@ -154,6 +162,13 @@
           className: 'mdc-data-table__cell',
         },
       ],
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        // Inisialisasi Select2 pada elemen select dengan id selectDropdown
+        $('#selectDropdown').select2();
     });
 </script>
 

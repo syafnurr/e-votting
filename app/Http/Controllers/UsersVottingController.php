@@ -65,4 +65,9 @@ class UsersVottingController extends Controller
     {
         //
     }
+
+    public function import()
+    {
+        return view('pages.dashboard.users.import');
+    }
 }

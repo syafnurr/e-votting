@@ -49,9 +49,11 @@ Route::middleware('auth')->group(function () {
 
     // Candidate
     Route::get('/dashboard/candidate', [CandidateController::class, 'index'])->name('candidate.index');
-    Route::get('/dashboard/candidate/create', [CandidateController::class, 'store'])->name('candidate.store');
+    Route::get('/dashboard/candidate/create', [CandidateController::class, 'create'])->name('candidate.create');
 
+    // Users
     Route::get('/dashboard/users', [UsersVottingController::class, 'index'])->name('users.index');
+    Route::get('/dashboard/users/import', [UsersVottingController::class, 'import'])->name('users.import');
 });
 
 // Route SuperAdmin

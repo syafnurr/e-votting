@@ -23,8 +23,8 @@ class EventController extends Controller
         $data = EventModel::where('users_id', $users_id)->get();
         $users = User::pluck('total_event')->toArray();
 
-        var_dump($users);
-        die();
+        // var_dump($users);
+        // die();
 
         return view('pages.dashboard.event.view', compact('data'));
     }

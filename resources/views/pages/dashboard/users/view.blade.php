@@ -7,11 +7,23 @@
         <h4 class="py-3 mb-4"><span class="text-muted fw-light">Dashboard / </span>Users</h4>
         <div class="btn-toolbar form-group mb-3">
             <div class="">
-            <a href="" type="button" class="btn btn-primary waves-effect waves-light mr-1">ADD NEW</a>
-            <a href="" type="button" class="btn btn-primary waves-effect waves-light mr-1">IMPORT EXCEL</a>
+            <a href="/dashboard/users/create" type="button" class="btn btn-primary waves-effect waves-light mr-1">ADD NEW</a>
+                <a href="/dashboard/users/import" type="button" class="btn btn-primary waves-effect waves-light mr-1">IMPORT EXCEL</a>
+            </div>
+            <div class="filter">
+                <select class="form-control ml-1 border-primary" id="selectDropdown">
+                    <option value="">Pemilihan Ketua</option>
+                    <option value="">Pemilihan Presiden</option>
+                    <option value="">Pemilihan RT</option>
+                    <option value="">Pemilihan Dukuh</option>
+                </select>
+            </div>
+            <div class="ml-auto">
+                <a href="/dashboard/users/import" type="button" class="btn btn-warning waves-effect waves-light mr-1">Send All Token</a>
             </div>
         </div>
-        <div class="row">
+
+        <div class="row mt-3">
             <div class="card card-body">
             <table id="users" class="table is-striped is-fullwidth" style="width:100%">
                 <thead>
@@ -78,6 +90,11 @@
                     },
             ]
         });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#selectDropdown').select2();
     });
 </script>
 @endSection

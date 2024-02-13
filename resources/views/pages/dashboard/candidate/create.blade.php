@@ -11,6 +11,20 @@
             <form action="">
                 <div class="card" style="border-radius: 15px;">
                 <div class="card-body mx-4">
+                <div class="row align-items-center pt-4 pb-3">
+                    <div class="col-md-3 ps-3">
+                        <h6 class="mb-0">Event</h6>
+                    </div>
+                    <div class="filter col-md-9 pe-5 mb-4">
+                        <select class="form-control form-control-lg" id="selectDropdown">
+                            <option value="" disabled>Pilih</option>
+                            <option value="Ketua">Pemilihan Ketua</option>
+                            <option value="Presiden">Pemilihan Presiden</option>
+                            <option value="RT">Pemilihan RT</option>
+                            <option value="Dukuh">Pemilihan Dukuh</option>
+                        </select>
+                    </div>
+                    <hr class="mx-n3 mt-4">
                     <div class="row align-items-center pt-4 pb-3">
                     <div class="col-md-3 ps-3">
                         <h6 class="mb-0">Full name</h6>
