@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\DashboardController;
@@ -25,8 +26,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('pages.dashboard.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 // Route Dashboard
 Route::middleware('auth')->group(function () {
@@ -54,6 +56,9 @@ Route::middleware('auth')->group(function () {
     // Users
     Route::get('/dashboard/users', [UsersVottingController::class, 'index'])->name('users.index');
     Route::get('/dashboard/users/import', [UsersVottingController::class, 'import'])->name('users.import');
+
+    // Logout
+    Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
 
 // Route SuperAdmin
