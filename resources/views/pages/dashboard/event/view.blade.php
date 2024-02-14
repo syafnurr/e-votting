@@ -21,8 +21,8 @@
                     <th>Dimulai</th>
                     <th>Selesai</th>
                     <th>Pengumuman</th>
-                    <th>Jam Pengumuman</th>
-                    <th>Action</th>
+                    <!-- <th>Jam Pengumuman</th> -->
+                    <th style="width: 170px;">Action</th>
                 </tr>
                 </thead>
             </table>
@@ -60,48 +60,46 @@
                 data: 'tgl_pemilihan', 
                 name: 'tgl_pemilihan',
                 render: function (data, type, full, meta) {
-                    return data ? '<span class="badge text-bg-info">' + data + '</span>' : '';
+                    return data && '<span class="badge text-bg-info">' + data + '</span>';
                 }
             },
             { 
                 data: 'jam_dimulai', 
                 name: 'jam_dimulai',
                 render: function (data, type, full, meta) {
-                    return data ? '<span class="badge text-bg-success">' + data + '</span>' : '';
+                    return data && '<span class="badge text-bg-success">' + data + '</span>';
                 }
             },
             { 
                 data: 'jam_selesai', 
                 name: 'jam_selesai',
                 render: function (data, type, full, meta) {
-                    return data ? '<span class="badge text-bg-warning">' + data + '</span>' : '';
+                    return data && '<span class="badge text-bg-warning">' + data + '</span>';
                 }
             },
             { 
                 data: 'tgl_pengumuman', 
                 name: 'tgl_pengumuman',
                 render: function (data, type, full, meta) {
-                    return data ? '<span class="badge text-bg-info">' + data + '</span>' : '';
-                }
-            },
-            { 
-                data: 'jam_pengumuman', 
-                name: 'jam_pengumuman',
-                render: function (data, type, full, meta) {
-                    return data ? '<span class="badge text-bg-primary">' + data + '</span>' : '';
+                    return data && '<span class="badge text-bg-info">' + data + '</span>';
                 }
             },
             {
                 data: 'id',
                 name: 'action',
                 render: function (data, type, full, meta) {
-                    return '<ul class="d-flex align-items-center">' +
-                        '<li><i class="bx bxs-edit"></i></li>' +
-                        '<li><a href="/dashboard/event/show/' + data + '"><i class="bx bx-low-vision"></i></a></li>' +
-                        '<li><i class="bx bxs-trash"></i></li>' +
-                        '</ul>';
+                    return '<div class="btn-group" role="group">' +
+                        '<a href="/dashboard/event/edit/' + data + '" class="btn btn-primary btn-sm"><i class="bx bx-pencil"></i></a> ' + // Tambahkan spasi setelah tombol pertama
+                        '<a href="/dashboard/event/show/' + data + '" class="btn btn-info btn-sm"><i class="bx bx-low-vision"></i></a> ' + // Tambahkan spasi setelah tombol kedua
+                        '<form action="/dashboard/event/delete/' + data + '" method="POST" class="d-inline">' +
+                        '@csrf' +
+                        '@method("DELETE")' +
+                        '<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this candidate?\')"><i class="bx bx-trash"></i></button>' +
+                        '</form>' +
+                        '</div>';
                 }
             },
+
         ]
     });
 });

@@ -10,11 +10,11 @@
                 <a href="/dashboard/candidate/create" type="button" class="btn btn-primary waves-effect waves-light mr-1">ADD NEW</a>
             </div>
             <div class="filter">
-                <select class="form-control ml-1 border-primary" id="selectDropdown">
-                    <option value="">Pemilihan Ketua</option>
-                    <option value="">Pemilihan Presiden</option>
-                    <option value="">Pemilihan RT</option>
-                    <option value="">Pemilihan Dukuh</option>
+                <select class="form-control ml-1 border-primary" id="">
+                    <option value="" disabled selected>Pilih Event</option>
+                    @foreach($events as $id => $title)
+                        <option value="{{ $id }}">{{ $title }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
@@ -22,122 +22,30 @@
             <div class="card card-body">
             <table id="candidate" class="table is-striped is-fullwidth" style="width:100%">
                 <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Departement</th>
-                    <th>Result</th>
-                    <th>Status</th>
-                </tr>
+                    <tr>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Status</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>John Doe</td>
-                    <td>Ketua</td>
-                    <td><span class="badge bg-label-primary me-1">2st</span></td>
-                    <td>
-                    <ul class=" d-flex align-items-center">
-                        <li>
-                        <i class='bx bxs-edit'></i>
-                        </li>
-                        <li>
-                        <i class='bx bx-low-vision'></i>
-                        </li>
-                        <li>
-                        <i class='bx bxs-trash'></i>
-                        </li>
-                    </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Jane Smith</td>
-                    <td>Ketua</td>
-                    <td><span class="badge bg-label-danger me-1">1st</span></td>
-                    <td>
-                    <ul class=" d-flex align-items-center">
-                        <li>
-                        <i class='bx bxs-edit'></i>
-                        </li>
-                        <li>
-                        <i class='bx bx-low-vision'></i>
-                        </li>
-                        <li>
-                        <i class='bx bxs-trash'></i>
-                        </li>
-                    </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Alice Johnson</td>
-                    <td>Sekretatis</td>
-                    <td><span class="badge bg-label-primary me-1">1st</span></td>
-                    <td>
-                    <ul class=" d-flex align-items-center">
-                        <li>
-                        <i class='bx bxs-edit'></i>
-                        </li>
-                        <li>
-                        <i class='bx bx-low-vision'></i>
-                        </li>
-                        <li>
-                        <i class='bx bxs-trash'></i>
-                        </li>
-                    </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Bob Williams</td>
-                    <td>Sekretaris</td>
-                    <td><span class="badge bg-label-primary me-1">2st</span></td>
-                    <td>
-                    <ul class=" d-flex align-items-center">
-                        <li>
-                        <i class='bx bxs-edit'></i>
-                        </li>
-                        <li>
-                        <i class='bx bx-low-vision'></i>
-                        </li>
-                        <li>
-                        <i class='bx bxs-trash'></i>
-                        </li>
-                    </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Eva Davis</td>
-                    <td>Bendahara</td>
-                    <td><span class="badge bg-label-danger me-1">2st</span></td>
-                    <td>
-                    <ul class=" d-flex align-items-center">
-                        <li>
-                        <i class='bx bxs-edit'></i>
-                        </li>
-                        <li>
-                        <i class='bx bx-low-vision'></i>
-                        </li>
-                        <li>
-                        <i class='bx bxs-trash'></i>
-                        </li>
-                    </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Dodi Davy</td>
-                    <td>Bendahara</td>
-                    <td><span class="badge bg-label-danger me-1">1st</span></td>
-                    <td>
-                    <ul class=" d-flex align-items-center">
-                        <li>
-                        <i class='bx bxs-edit'></i>
-                        </li>
-                        <li>
-                        <i class='bx bx-low-vision'></i>
-                        </li>
-                        <li>
-                        <i class='bx bxs-trash'></i>
-                        </li>
-                    </ul>
-                    </td>
-                </tr>
+                    @foreach($candidates as $key => $candidate)
+                    <tr data-event-id="{{ $candidate->event_id }}">
+                        <td>{{ $key + 1 }}</td>
+                        <td>{{ $candidate->name }}</td>
+                        <td>{{ $candidate->department }}</td>
+                        <td>
+                            <a href="" class="btn btn-primary btn-sm"><i class='bx bx-pencil'></i></a>
+                            <a href="" class="btn btn-info btn-sm"><i class='bx bx-low-vision'></i></a>
+                            <form action="" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this candidate?')"><i class='bx bx-trash'></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
             </div>
@@ -153,7 +61,7 @@
 <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bulma.min.js"></script>
 
-<script>
+<!-- <script>
     new DataTable('#candidate', {
       autoWidth: false,
       columnDefs: [
@@ -163,6 +71,22 @@
         },
       ],
     });
+</script> -->
+<script>
+$(document).ready(function() {
+    var table = $('#candidate').DataTable();
+
+    $('#event_filter').on('change', function() {
+        var event_id = $(this).val();
+
+        table.columns(3).search('').draw(); // Reset search pada kolom "Status"
+        if (event_id) {
+            table.columns(0).search(event_id).draw();
+        } else {
+            table.draw();
+        }
+    });
+});
 </script>
 
 <script>

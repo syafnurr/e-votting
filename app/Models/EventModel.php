@@ -14,7 +14,5 @@ class EventModel extends Model
         'users_id', 'title', 'tgl_pemilihan', 'jam_dimulai', 'jam_selesai', 'tgl_pengumuman', 'jam_pengumuman'
     ];
 
-    // protected $guarded = [];
-
     protected $primaryKey = 'id';
 }

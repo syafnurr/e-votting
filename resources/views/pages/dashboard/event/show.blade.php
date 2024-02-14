@@ -83,7 +83,6 @@
                         </div>
                         <div class="px-5 py-4 d-flex justify-content-end">
                         <a href="/dashboard/event" type="button" class="btn btn-warning btn-lg mr-3">Back</a>
-                        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                         </div>
                     </div>
                     </div>

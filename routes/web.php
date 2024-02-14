@@ -52,6 +52,8 @@ Route::middleware('auth')->group(function () {
     // Candidate
     Route::get('/dashboard/candidate', [CandidateController::class, 'index'])->name('candidate.index');
     Route::get('/dashboard/candidate/create', [CandidateController::class, 'create'])->name('candidate.create');
+    Route::post('/dashboard/candidate/store', [CandidateController::class, 'store'])->name('candidate.store');
+    Route::get('/dashboard/candidate/data', [CandidateController::class, 'getItemCandidatesData'])->name('candidate.data');
 
     // Users
     Route::get('/dashboard/users', [UsersVottingController::class, 'index'])->name('users.index');

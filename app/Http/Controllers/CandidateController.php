@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CandidateModel;
+use App\Models\EventModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Datatables;
 
 class CandidateController extends Controller
 {
@@ -11,7 +15,15 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        return view('pages.dashboard.candidate.view');
+        $id = Auth::id();
+        // $events = EventModel::where('users_id', $id)->pluck('title');
+        $events = EventModel::where('users_id', $id)->pluck('title', 'id');
+
+        $candidate = CandidateModel::all();
+        // var_dump($events);
+        // die();
+
+        return view('pages.dashboard.candidate.view')->with('events', $events)->with('candidates', $candidate);
     }
 
     /**
@@ -19,7 +31,18 @@ class CandidateController extends Controller
      */
     public function create()
     {
-        return view('pages.dashboard.candidate.create');
+        $id = Auth::id();
+
+        $events = EventModel::where('users_id', $id)->pluck('title', 'id');
+
+        // $events = EventModel::pluck('title', 'id');
+
+        return view('pages.dashboard.candidate.create', compact('events'));
+        // $data = EventModel::where('users_id', $id)->pluck('title', 'id');
+        // // var_dump($data);
+        // // die();
+
+        // return view('pages.dashboard.candidate.create', );
     }
 
     /**
@@ -27,7 +50,30 @@ class CandidateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = Auth::id();
+        $data = EventModel::where('users_id', $id)->pluck('title');
+
+        $request->validate([
+            'event_id' => 'required',
+            'name' => 'required|string',
+            'department' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5000',
+        ]);
+
+        $imageName = time() . '.' . $request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
+
+        CandidateModel::create([
+            'event_id' => $request->event_id,
+            'name' => $request->name,
+            'department' => $request->department,
+            'image' => $imageName,
+        ]);
+
+        return redirect()->route('candidate.index')
+            ->with('success', 'Item candidate has been created successfully.');
+
+        // return redirect()->route('candidate.index')->with('success', 'Data Berhasil Disimpan')->with('data', $data);
     }
 
     /**
